@@ -1,5 +1,5 @@
-import { Tree, TreeNode } from 'react-organizational-chart'
 import './App.css'
+import EjemploLibreria from './components/EjemploLibreria'
 import Title from './components/Title'
 import TitleOrange from './components/TitleOrange'
 
@@ -7,27 +7,74 @@ function App() {
 
   return (
     <>
-      <Tree label={<TitleOrange name='Consejo directivo'/> } lineColor="#0e147b" lineWidth='2px'>
-        <TreeNode label={<Title name='Oficina de Tecnologias de la Informacion'/>}>
-          <TreeNode label={<Title name='Area de desarollo de talento'/>} />
-          <TreeNode label={<Title name='Area de administracion de personal'/>} />
-          <TreeNode label={<Title name='Area de clima, cultura y comunicacion interna'/>} >
-            <TreeNode label={<Title name='Unidad de Finanzas'/>} />
-            <TreeNode label={<Title name='Unidad de Finanzas'/>} />
-          </TreeNode>
-        </TreeNode>
-        <TreeNode label={<Title name='Oficina de Recursos Humanos'/>}>
-          <TreeNode label={<Title name='Area de infraestructura tecnologica'/>} />
-          <TreeNode label={<Title name='Area de ifnromatica y sitemas'/>} />
-        </TreeNode>
-        <TreeNode label={<Title name='Oficina de adminsitracion y finanzas'/>}>
-          <TreeNode label={<Title name='Unidad de abastecimiento'/>} >
-            <TreeNode label={<Title name='Unidad de Finanzas'/>} />
-            <TreeNode label={<Title name='Unidad de Finanzas'/>} />
-          </TreeNode>
-          <TreeNode label={<Title name='Unidad de Finanzas'/>} />
-        </TreeNode>
-      </Tree>
+      <EjemploLibreria/>
+
+      <div>
+        <h1>Nuevo diseno</h1>
+
+        <ul className='padre'>
+          <li className='hijo-general'>
+            <TitleOrange name='Consejo directivo'/>
+            <ul className='sub-hijo'>
+              <li className="hijo">
+                <Title name='Oficina de Tecnologias de la Informacion'/>
+                <ul className='sub-hijo'>
+                  <li className="hijo">
+                    <Title name='Area de desarollo de talento'/>
+                  </li>
+                  <li className="hijo">
+                    <Title name='Area de administracion de personal'/>
+                  </li>
+                  <li className="hijo">
+                    <Title name='Area de clima, cultura y comunicacion interna'/>
+                    <ul className='sub-hijo'>
+                      <li className="hijo">
+                        <Title name='Unidad de Finanzas'/>
+                      </li>
+                      <li className="hijo">
+                        <Title name='Unidad de Finanzas'/>
+                      </li>
+                      <li className="hijo">
+                        <Title name='Area de administracion de personal'/>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li className="hijo">
+                <Title name='Oficina de Tecnologias de la Informacion'/>
+                <ul className='sub-hijo'>
+                  <li className="hijo">
+                    <Title name='Area de infraestructura tecnologica'/>
+                  </li>
+                  <li className="hijo">
+                    <Title name='Area de ifnromatica y sitemas'/>
+                  </li>
+                </ul>
+              </li>
+              <li className="hijo">
+                <Title name='Oficina de adminsitracion y finanzas'/>
+                <ul className='sub-hijo'>
+                  <li className="hijo">
+                    <Title name='Unidad de abastecimiento'/>
+                    <ul className='sub-hijo'>
+                      <li className="hijo">
+                        <Title name='Unidad de Finanzas'/>
+                      </li>
+                      <li className="hijo">
+                        <Title name='Unidad de Finanzas'/>
+                      </li>
+                    </ul>
+                  </li>
+                  <li className="hijo">
+                    <Title name='Unidad de Finanzas'/>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </>
   )
 }

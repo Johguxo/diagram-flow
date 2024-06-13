@@ -40,3 +40,109 @@
 .read-the-docs {
   color: #888;
 }
+
+
+.padre {
+  -webkit-padding-start: 0;
+  padding-inline-start: 0;
+  margin: 0;
+  /*display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;*/
+  display: flex;
+  --line-height: 25px;
+  --line-width: 2px;
+  --line-color: #0e147b;
+  --line-border-radius: 5px;
+  --line-style: solid;
+  --node-padding: 5px;
+  --tree-line-height: var(--line-height, 20px);
+  --tree-line-width: var(--line-width, 1px);
+  --tree-line-color: var(--line-color, black);
+  --tree-line-border-radius: var(--line-border-radius, 5px);
+  --tree-node-line-style: var(--line-style, solid);
+  --tree-node-padding: var(--node-padding, 5px);
+}
+
+
+.hijo-general {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: var(--tree-line-height) var(--tree-node-padding) 0 var(--tree-node-padding);
+}
+
+.hijo {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: var(--tree-line-height) var(--tree-node-padding) 0 var(--tree-node-padding);
+}
+
+.hijo:first-of-type::after {
+  border-radius: var(--tree-line-border-radius) 0 0 0;
+}
+
+.hijo:first-of-type::before {
+  border: 0 none;
+}
+
+.hijo::after {
+  left: 50%;
+  border-left: var(--tree-line-width) var(--tree-node-line-style) var(--tree-line-color);
+}
+
+.hijo::before, .hijo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: var(--tree-line-height);
+  box-sizing: border-box;
+  right: 50%;
+  width: 50%;
+  border-top: var(--tree-line-width) var(--tree-node-line-style) var(--tree-line-color);
+}
+
+.hijo:last-of-type::before {
+  border-right: var(--tree-line-width) var(--tree-node-line-style) var(--tree-line-color);
+  border-radius: 0 var(--tree-line-border-radius) 0 0;
+}
+
+.hijo:last-of-type::after {
+  border: 0 none;
+}
+
+.sub-hijo {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-padding-start: 0;
+    padding-inline-start: 0;
+    margin: 0;
+    padding-top: var(--tree-line-height);
+    position: relative;
+}
+
+.sub-hijo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: var(--tree-line-height);
+  box-sizing: border-box;
+  left: calc(50% - var(--tree-line-width) / 2);
+  width: 0;
+  border-left: var(--tree-line-width) var(--tree-node-line-style) var(--tree-line-color);
+}
+
+ol, ul, menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
