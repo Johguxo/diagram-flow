@@ -5,50 +5,7 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-
-.padre {
-  -webkit-padding-start: 0;
-  padding-inline-start: 0;
-  margin: 0;
-  /*display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;*/
+.full-padre {
   display: flex;
   --line-height: 25px;
   --line-width: 2px;
@@ -64,15 +21,49 @@
   --tree-node-padding: var(--node-padding, 5px);
 }
 
+.padre {
+  -webkit-padding-start: 0;
+  padding-inline-start: 0;
+  margin: 0;
+  /*display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;*/
+  display: flex;
+  flex-direction: column;
+  --line-height: 25px;
+  --line-width: 2px;
+  --line-color: #0e147b;
+  --line-border-radius: 5px;
+  --line-style: solid;
+  --node-padding: 5px;
+  --space-section: 20%;
+  --tree-line-height: var(--line-height, 20px);
+  --tree-line-width: var(--line-width, 1px);
+  --tree-line-color: var(--line-color, black);
+  --tree-line-border-radius: var(--line-border-radius, 5px);
+  --tree-node-line-style: var(--line-style, solid);
+  --tree-node-padding: var(--node-padding, 5px);
+  --tree-space-section: var(--space-section, 20px);
+}
 
 .hijo-general {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   text-align: center;
   list-style-type: none;
   position: relative;
-  padding: var(--tree-line-height) var(--tree-node-padding) 0 var(--tree-node-padding);
+  /*padding: var(--tree-line-height) var(--tree-node-padding) 0 var(--tree-node-padding);*/
+}
+
+.hijo-vertical {
+  flex: auto;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
 }
 
 .hijo {
@@ -89,13 +80,33 @@
   border-radius: var(--tree-line-border-radius) 0 0 0;
 }
 
+.right-section .hijo:first-of-type::after {
+  border-radius: 0 0 0 0;
+}
+
 .hijo:first-of-type::before {
   border: 0 none;
+}
+
+.right-section .hijo:first-of-type::before {
+  border-top: var(--tree-line-width) var(--tree-node-line-style) var(--tree-line-color);
 }
 
 .hijo::after {
   left: 50%;
   border-left: var(--tree-line-width) var(--tree-node-line-style) var(--tree-line-color);
+}
+
+.hijo::after::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  top: 0;
+  left: -5px; /* Adjust based on border width */
+  border-width: 0 0 5px 10px; /* Adjust based on arrow size */
+  border-color: transparent transparent black transparent;
 }
 
 .hijo::before, .hijo::after {
@@ -114,20 +125,34 @@
   border-radius: 0 var(--tree-line-border-radius) 0 0;
 }
 
+.left-section .hijo:last-of-type::before {
+  border-right: var(--tree-line-width) var(--tree-node-line-style) var(--tree-line-color);
+  border-radius: 0 0 0 0;
+}
+
 .hijo:last-of-type::after {
   border: 0 none;
 }
 
+.left-section .hijo:last-of-type::after {
+  border-top: var(--tree-line-width) var(--tree-node-line-style) var(--tree-line-color);
+}
+
+.punteado {
+  border-radius: 1rem;
+  border: dashed 1px black;
+}
+
 .sub-hijo {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-padding-start: 0;
-    padding-inline-start: 0;
-    margin: 0;
-    padding-top: var(--tree-line-height);
-    position: relative;
+  /*display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;*/
+  display: flex;
+  -webkit-padding-start: 0;
+  padding-inline-start: 0;
+  margin: 0;
+  padding-top: var(--tree-line-height);
+  position: relative;
 }
 
 .sub-hijo::before {
@@ -139,6 +164,95 @@
   left: calc(50% - var(--tree-line-width) / 2);
   width: 0;
   border-left: var(--tree-line-width) var(--tree-node-line-style) var(--tree-line-color);
+}
+
+.sub-hijo-vertical {
+  /*display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;*/
+  display: flex;
+  flex-direction: column;
+  -webkit-padding-start: 0;
+  padding-inline-start: 0;
+  padding-top: var(--tree-line-height);
+  margin: 0;
+  position: relative;
+}
+
+
+.sub-hijo-vertical::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: var(--tree-line-height);
+  box-sizing: border-box;
+  left: calc(50% - var(--tree-line-width) / 2);
+  width: 0;
+  border-left: var(--tree-line-width) var(--tree-node-line-style) var(--tree-line-color);
+}
+
+.sub-hijo-sections {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr; /* Dos columnas y una para la línea */
+  padding-inline-start: 0;
+  margin: 0;
+  padding-top: calc(5*var(--tree-line-height));
+  position: relative;
+  list-style: none;
+  align-items: start; /* Alinea los elementos en la parte superior */
+}
+
+.section-a .sub-hijo-sections::after {
+  content: '';
+  position: absolute;
+  top: calc(2*var(--tree-line-height));
+  height: 0;
+  box-sizing: border-box;
+  left: calc(50% - var(--tree-space-section) / 2);
+  width: var(--tree-space-section);
+  border-top: var(--tree-line-width) var(--tree-node-line-style) var(--tree-line-color);
+}
+
+.sub-hijo-sections::before {
+  /*content: "";
+  grid-column: 2; / * Ubica la línea en la segunda columna * /
+  width: 1px;
+  background-color: black; / * Color de la línea * /
+  height: 100%;
+  justify-self: center; / * Centra la línea en la columna */
+
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  box-sizing: border-box;
+  left: calc(50% - var(--tree-line-width) / 2);
+  width: 0;
+  border-left: var(--tree-line-width) var(--tree-node-line-style) var(--tree-line-color);
+}
+
+.section-a .sub-hijo-sections {
+  grid-template-columns: 1fr var(--tree-space-section) 1fr; /* Dos columnas y una para la línea */
+  padding-top: calc(2*var(--tree-line-height));
+}
+
+.section-b .sub-hijo-sections {
+  grid-template-columns: 1fr 1px 1fr; /* Dos columnas y una para la línea */
+  padding-top: calc(5*var(--tree-line-height));
+}
+
+.left-section,
+.right-section {
+    display: flex;
+    /* gap: var(--tree-line-height); Espacio entre los elementos li */
+}
+
+.left-section {
+    grid-column: 1;
+}
+
+.right-section {
+    grid-column: 3;
 }
 
 ol, ul, menu {

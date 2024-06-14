@@ -6,7 +6,7 @@ interface Props {
 function TitleOrange(props: Props ){
   return (
     <>
-      <div className="border-2 border-orange-500 rounded-md text-orange-500 font-semibold">{props.name}</div>
+      <div className="flex self-center m-2 w-fit p-1 border-2 border-orange-500 rounded-md text-orange-500 font-semibold">{props.name}</div>
     </>
   )
 }
